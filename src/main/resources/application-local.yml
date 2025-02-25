@@ -1,0 +1,34 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/doms?currentSchema=t1001
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      idle-timeout: 30000
+      max-lifetime: 1800000
+      connection-timeout: 20000
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+cloud:
+  aws:
+    credential:
+      accessKey: AKIAURTGHBG4BTZXKU5S # UPDATE TO RIGHT DATA
+      secretKey: TYOcnqFaLy7qnEW4fyT5zqgFh6p5oQNkuUS9AGD # UPDATE TO RIGHT DATA
+    region: ap-south-1
+    stack:
+      auto: false
+    bucketConfig:
+      publicBucket:
+        name: doms_doc_local_public
+        path: https://doms.s3.amazonaws.com/
+      privateBucket:
+        name: doms_doc_local_private
+        path: https://doms-bucket.s3.amazonaws.com/
+        expirationTime: 5 # signed url expiration time in minute
